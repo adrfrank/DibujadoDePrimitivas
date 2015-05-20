@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dibujado de primitivas - Graficas por computadora</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Dibujado de primitivas</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="#panel-rectas">Dibujado de Rectas</a>
+                        </li>
+                        <li>
+                            <a href="#panel-elipses">Dibujado de Elipses</a>
+                        </li>
+                        <li>
+                            <a href="#panel-circulos">Dibujado de C&iacute;rculos</a>
+                        </li>                        
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Dibujado de primitivas</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="panel-rectas" class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Dibujado de rectas
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Algoritmo <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li>
+                                            <a href="#" class="btn-bresenham">Bresenham</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body"> 
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-1">x<sub>1</sub></label>
+                                    <div class="col-xs-5">
+                                        <input id="bres-x1" type="number" class="form-control" >
+                                    </div>
+                                    <label class="control-label col-xs-1">y<sub>1</sub></label>
+                                    <div class="col-xs-5"><input id="bres-y1" type="number" class="form-control" ></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-xs-1">x<sub>2</sub></label>
+                                    <div class="col-xs-5">
+                                        <input id="bres-x2" type="number" class="form-control" >
+                                    </div>
+                                    <label class="control-label col-xs-1">y<sub>2</sub></label>
+                                    <div class="col-xs-5"><input id="bres-y2" type="number" class="form-control" ></div>
+                                </div>
+                            </form>
+                            <table id="bres-table" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>k</th>
+                                            <th>X<sub>k</sub></th>
+                                            <th>Y<sub>k</sub></th>
+                                            <th>(x<sub>k</sub>,y<sub>k</sub>)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="panel-elipses" class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Dibujado de Elipses
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Algoritmo <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li>
+                                            <a href="#" class="btn-elipse-pmedio">Punto medio</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="btn-elipse-polares">Ecuaciones param&eacute;tricas polaress</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body"> 
+                             <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-1">c<sub>x</sub></label>
+                                    <div class="col-xs-5">
+                                        <input id="el-cx" type="number" class="form-control"  value="37">
+                                    </div>
+                                    <label class="control-label col-xs-1">c<sub>y</sub></label>
+                                    <div class="col-xs-5"><input id="el-cy" type="number" class="form-control" value="49" ></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-xs-1">r<sub>x</sub></label>
+                                    <div class="col-xs-5">
+                                        <input id="el-rx" type="number" class="form-control"  value="13">
+                                    </div>
+                                    <label class="control-label col-xs-1">r<sub>y</sub></label>
+                                    <div class="col-xs-5"><input id="el-ry" type="number" class="form-control" value="21"></div>
+                                </div>
+                            </form>
+                            <table id="el-table1" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>k</th>
+                                        <th>P1<sub>k</sub></th>
+                                        <th>X<sub>k+1</sub></th>
+                                        <th>y<sub>k+1</sub></th>
+                                        <th>2r<sub>y</sub><sup>2</sup>x<sub>k+1</sub></th>
+                                        <th>2r<sub>x</sub><sup>2</sup>y<sub>k+1</sub></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <table id="el-table2" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>k</th>
+                                        <th>P2<sub>k</sub></th>
+                                        <th>X<sub>k+1</sub></th>
+                                        <th>y<sub>k+1</sub></th>
+                                        <th>2r<sub>y</sub><sup>2</sup>x<sub>k+1</sub></th>
+                                        <th>2r<sub>x</sub><sup>2</sup>y<sub>k+1</sub></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <table id="el-puntos" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>(x,y)</th>
+                                        <th>(x,y)</th>
+                                        <th>(x,y)</th>
+                                        <th>(x,y)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <table id="el-polar" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&theta;</th>
+                                        <th>(x,y)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="panel-circulos" class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Dibujado de C&iacute;rculos
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Algoritmo <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li>
+                                            <a href="#" class="btn-circulo-pmedio">Punto medio</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="btn-circulo-polares">Ecuaciones param&eacute;tricas polaress</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                             <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-1">c<sub>x</sub></label>
+                                    <div class="col-xs-5">
+                                        <input id="circ-cx" type="number" class="form-control" value="38" >
+                                    </div>
+                                    <label class="control-label col-xs-1">c<sub>y</sub></label>
+                                    <div class="col-xs-5"><input id="circ-cy" type="number" class="form-control" value="61" ></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-xs-1">r</label>
+                                    <div class="col-xs-5">
+                                        <input id="circ-r" type="number" class="form-control" value="14" >
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                            <table id="circ-table" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>k</th>
+                                        <th>P<sub>k</sub></th>
+                                        <th>X<sub>k+1</sub></th>
+                                        <th>y<sub>k+1</sub></th>
+                                        <th>2x<sub>k+1</sub></th>
+                                        <th>2y<sub>k+1</sub></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <table id="circ-puntos" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>(x,y)</th>
+                                        <th>(x,y)</th>
+                                        <th>(x,y)</th>
+                                        <th>(x,y)</th>
+                                        <th>(x,y)</th>
+                                        <th>(x,y)</th>
+                                        <th>(x,y)</th>
+                                        <th>(x,y)</th>                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          
+         
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+    <script type="text/javascript">
+        var Algoritmos = {
+            linea: function(x0, y0, x1, y1){
+                puntos = [];
+                var x, y, dx, dy, p, incE, incNE, stepx, stepy;
+                dx = Math.abs(x1 - x0);
+                dy = Math.abs(y1 - y0);
+                /* determinar que punto usar para empezar, cual para terminar */
+                if (y0 > y1) stepy = -1;
+                else stepy = 1;
+
+                if (x0 > x1) stepx = -1;
+                else stepx = 1;
+
+                x = x0;
+                y = y0;
+                puntos.push({x:x,y:y});
+                /* se cicla hasta llegar al extremo de la línea */
+                if (dx>dy){
+                    p = 2 * dy - dx;
+                    incE = 2 * dy;
+                    incNE = 2 * (dy - dx);
+                    while (x != x1){
+                        x = x + stepx;
+                        if (p < 0){
+                            p = p + incE;
+                        }
+                        else {
+                            y = y + stepy;
+                            p = p + incNE;
+                        }
+                        puntos.push({x:x,y:y});  
+                    }
+                }
+                else{
+                    p = 2 * dx - dy;
+                    incE = 2 * dx;
+                    incNE = 2 * (dx - dy);
+                    while (y != y1){
+                        y = y + stepy;
+                        if (p < 0){
+                            p = p + incE;
+                        }
+                        else {
+                            x = x + stepx;
+                            p = p + incNE;
+                        }
+                        puntos.push({x:x,y:y});  
+                    }
+                }
+                return puntos;
+            },
+            transatePoint:function(punto,translate){
+                var newPoint;
+                newPoint.x = punto.x + translate.x;
+                newPoint.y =  punto.y + translate.y;
+                return newPoint;
+
+            },
+            elipsePuntoMedio:function(cx,cy,rx,ry){
+                var punto={};
+                var p, px, py;
+                var ry2, rx2, tworx2, twory2;
+                var puntos = [];
+                var tabla1 = [];
+                var tabla2 = [];
+
+                ry2 = ry*ry;
+                rx2 = rx*rx;
+
+                twory2 = 2 * ry2;
+                tworx2 = 2 * rx2;
+                //region 1
+                punto.x = 0;
+                punto.y = ry;
+                puntos.push({x:punto.x,y:punto.y});
+               
+
+
+                p = Math.round(ry2 - rx2*ry + (0.25*rx2));
+                px = 0;
+                py =tworx2*punto.y; //toint
+
+                while (px<py)
+                {
+                    var t={};
+                    
+                    punto.x++;
+                    px += twory2;//toint
+                    t.p=p;
+                    if (p >= 0)
+                    {
+                        punto.y--;
+                        py -= tworx2; //toint
+                    }
+                    if (p<0)
+                    {
+                        p += ry2 + px;//toint
+                    }
+                    else{
+                        p += ry2 + px - py; //toint
+                    }
+                    t.punto = {x:punto.x,y:punto.y};
+                    t.px = px;
+                    t.py = py;
+                    tabla1.push(t);
+                    puntos.push({x:punto.x,y:punto.y});
+                }
+
+                //region 2
+                p = Math.round(ry2*(punto.x + 0.5)*(punto.x + 0.5) + rx2*(punto.y - 1)*(punto.y - 1) - rx2*ry2);
+                while (punto.y>0)
+                {
+                    var t={};
+                    punto.y--;
+                    py -= tworx2; //toint
+                    t.p = p;
+                    if (p <= 0)
+                    {
+                        punto.x++;
+                        px += twory2;//toint
+                    }
+                    if (p>0)
+                    {
+                        p += rx2 - py;//toint
+                    }
+                    else{
+                        p += rx2 - py + px;//toint
+                    }
+                    t.punto = {x:punto.x,y:punto.y};
+                    t.px = px;
+                    t.py = py;
+                    tabla2.push(t);
+                    puntos.push({x:punto.x,y:punto.y});
+                }
+                var tpuntos = [];
+                for(var i=0; i < puntos.length; i++){
+                    tpuntos.push({x:cx+puntos[i].x ,y: cy + puntos[i].y});
+                    tpuntos.push({x:cx-puntos[i].x ,y: cy + puntos[i].y});
+                    tpuntos.push({x:cx+puntos[i].x ,y: cy - puntos[i].y});
+                    tpuntos.push({x:cx-puntos[i].x ,y: cy - puntos[i].y});
+                }
+                return  {tabla1:tabla1,tabla2:tabla2,puntos:tpuntos};
+            },
+            elipsePolar:function(cx,cy,rx,ry){
+                var q = (Math.PI /(4*Math.max(rx,ry)));
+                var puntos = [];
+                for (var i = 0; i <= 2 * Math.PI; i += q){
+                    puntos.push({theta: i,x:cx + Math.round(rx*Math.cos(i)), y: cy + Math.round(ry*Math.sin(i))});
+                    //puntos.push({x:cx - parseInt(rx*Math.cos(i)), y: cy + parseInt(ry*Math.sin(i))});
+                    //puntos.push({x:cx + parseInt(rx*Math.cos(i)), y: cy - parseInt(ry*Math.sin(i))});
+                    //puntos.push({x:cx - parseInt(rx*Math.cos(i)), y: cy - parseInt(ry*Math.sin(i))});
+                }
+                return puntos;
+            },
+            circuloPuntoMedio:function(cx,cy,r){
+                var p;
+                var coord={};
+                coord.x = 0;
+                coord.y = r ;
+                var acc=1;
+                var puntos=[], tabla=[];
+                puntos.push({x:cx+coord.x,y:cy+coord.y});
+                puntos.push({x:cx-coord.x,y:cy+coord.y});
+                puntos.push({x:cx+coord.x,y:cy-coord.y});
+                puntos.push({x:cx-coord.x,y:cy-coord.y});
+                puntos.push({x:cx+coord.y,y:cy+coord.x});
+                puntos.push({x:cx-coord.y,y:cy+coord.x});
+                puntos.push({x:cx+coord.y,y:cy-coord.x});
+                puntos.push({x:cx-coord.y,y:cy-coord.x});
+            
+                p = 1 -r;
+                while(coord.x < coord.y){
+                    var t={};
+                    t.p = p;
+                    if(p < 0){
+                        coord.x++;
+                        p += 2 * coord.x + 1;
+                    }else{
+                        coord.x++;
+                        coord.y --;
+                        p+= 2 * (coord.x -coord.y) +1;
+                    }
+                    t.punto = {x:coord.x,y:coord.y};
+                    t.twox = 2*coord.x;
+                    t.twoy = 2*coord.y;
+                    tabla.push(t);
+                    puntos.push({x:cx+coord.x,y:cy+coord.y});
+                    puntos.push({x:cx-coord.x,y:cy+coord.y});
+                    puntos.push({x:cx+coord.x,y:cy-coord.y});
+                    puntos.push({x:cx-coord.x,y:cy-coord.y});
+                    puntos.push({x:cx+coord.y,y:cy+coord.x});
+                    puntos.push({x:cx-coord.y,y:cy+coord.x});
+                    puntos.push({x:cx+coord.y,y:cy-coord.x});
+                    puntos.push({x:cx-coord.y,y:cy-coord.x});
+                }
+                return {puntos:puntos, tabla: tabla};
+            },
+
+            preventNan:function(x){
+                return isNaN(x)?0:x;
+            }
+
+        };
+
+        (function($,window, undefined){
+            console.log("Start");
+            var page = {
+                $btnBresenham: $(".btn-bresenham"),
+                $btnElipsePolares: $(".btn-elipse-polares"),
+                $btnElipsePmedio: $(".btn-elipse-pmedio"),
+                $btnCirculoPolares: $(".btn-circulo-polares"),
+                $btnCirculoPmedio: $(".btn-circulo-pmedio"),
+                init: function(){
+                    $("table").addClass("hidden");
+                    page.bindings();
+                },
+                bindings: function(){
+                    page.$btnBresenham.on("click",page.bresenham_click);
+                    page.$btnCirculoPolares.on("click",page.btnCirculoPolares_click);
+                    page.$btnCirculoPmedio.on("click",page.btnCirculoPmedio_click);
+                    page.$btnElipsePolares.on("click",page.btnElipsePolares_click);
+                    page.$btnElipsePmedio.on("click",page.btnElipsePmedio_click);
+
+                },
+                bresenham_click:function(e){
+                    e.preventDefault();$("table").addClass("hidden");
+                    console.log("bresenham_click");
+                    var x1 =  parseInt($("#bres-x1").val());
+                    var y1 =  parseInt($("#bres-y1").val());
+                    var x2 =  parseInt($("#bres-x2").val());
+                    var y2 =  parseInt($("#bres-y2").val());
+                    x1 = isNaN(x1)?0:x1;
+                    y1 = isNaN(y1)?0:y1;
+                    x2 = isNaN(x2)?0:x2;
+                    y2 = isNaN(y2)?0:y2;
+                    console.log(x1,y1,x2,y2);
+                    var puntos = Algoritmos.linea(x1,y1,x2,y2);
+                    console.log(puntos);
+                    var $tr = $("<tr>")
+                        .append($("<td>").attr("id","bresInd"))
+                        .append($("<td>").attr("id","bresX"))
+                        .append($("<td>").attr("id","bresY"))
+                        .append($("<td>").attr("id","bresPt"))
+                    var $tbody = $("#bres-table tbody").empty()
+                    for(var i in puntos){
+                        var p = puntos[i];
+                        var trpunto = $tr.clone();
+                        trpunto.find("#bresInd").html(i);
+                        trpunto.find("#bresX").html(p.x);
+                        trpunto.find("#bresY").html(p.y);
+                        trpunto.find("#bresPt").html("("+p.x+","+p.y+")");
+                        $tbody.append(trpunto);
+                    }
+                    $tbody.closest("table").removeClass("hidden");
+
+                },
+                btnCirculoPmedio_click:function(e){
+                    e.preventDefault();$("table").addClass("hidden")
+                    console.log("btnCirculoPmedio_click");
+                    var cx = parseInt($("#circ-cx").val());
+                    var cy = parseInt($("#circ-c").val());
+                    var r = parseInt($("#circ-r").val());
+                    cx = Algoritmos.preventNan(cx);
+                    cy = Algoritmos.preventNan(cy);
+                    r = Algoritmos.preventNan(r);
+                    var res = Algoritmos.circuloPuntoMedio(cx,cy,r);
+                    console.log(res);
+                    var $tr =  $("<tr>")
+                        .append($("<td>").attr("id","circK"))
+                        .append($("<td>").attr("id","circP"))
+                        .append($("<td>").attr("id","circX"))
+                        .append($("<td>").attr("id","circY"))
+                        .append($("<td>").attr("id","circ2x"))
+                        .append($("<td>").attr("id","circ2y"));
+                    var $tbody = $("#circ-table tbody").empty();
+                    $tbody.closest("table").removeClass("hidden");
+                    for(var i in res.tabla){
+                        var t = res.tabla[i];
+                        var tr = $tr.clone();
+                        tr.find("#circK").html(i);
+                        tr.find("#circP").html(t.p);
+                        tr.find("#circX").html(t.punto.x);
+                        tr.find("#circY").html(t.punto.y);
+                        tr.find("#circ2x").html(t.twox);
+                        tr.find("#circ2y").html(t.twoy);
+                        $tbody.append(tr);
+                    }
+                    $tr = $("<tr>")
+                        .append($("<td>").attr("id","circPt"))
+                        .append($("<td>").attr("id","circPt1"))
+                        .append($("<td>").attr("id","circPt2"))
+                        .append($("<td>").attr("id","circPt3"))
+                        .append($("<td>").attr("id","circPt4"))
+                        .append($("<td>").attr("id","circPt5"))
+                        .append($("<td>").attr("id","circPt6"))
+                        .append($("<td>").attr("id","circPt7"));
+                    $tbody = $("#circ-puntos tbody").empty();
+                    $tbody.closest("table").removeClass("hidden");
+                    var aux = {};
+                    for(var i=0; i < res.puntos.length; i+=8){
+                        var tr = $tr.clone();
+                        var temp = "("+res.puntos[i].x+","+res.puntos[i].y+")";
+                        if(!aux[temp]){
+                            tr.find("#circPt").html(temp);
+                            aux[temp]=1;
+                        }
+                        var temp = "("+res.puntos[i+1].x+","+res.puntos[i+1].y+")";
+                        if(!aux[temp]){
+                            tr.find("#circPt1").html(temp);
+                            aux[temp]=1;
+                        }
+                        var temp = "("+res.puntos[i+2].x+","+res.puntos[i+2].y+")";
+                        if(!aux[temp]){
+                            tr.find("#circPt2").html(temp);
+                            aux[temp]=1;
+                        }
+                        var temp = "("+res.puntos[i+3].x+","+res.puntos[i+3].y+")";
+                        if(!aux[temp]){
+                            tr.find("#circPt3").html(temp);
+                            aux[temp]=1;
+                        }
+                        var temp = "("+res.puntos[i+4].x+","+res.puntos[i+4].y+")";
+                        if(!aux[temp]){
+                            tr.find("#circPt4").html(temp);
+                            aux[temp]=1;
+                        }
+                        var temp = "("+res.puntos[i+5].x+","+res.puntos[i+5].y+")";
+                        if(!aux[temp]){
+                            tr.find("#circPt5").html(temp);
+                            aux[temp]=1;
+                        }
+                        var temp = "("+res.puntos[i+6].x+","+res.puntos[i+6].y+")";
+                        if(!aux[temp]){
+                            tr.find("#circPt6").html(temp);
+                            aux[temp]=1;
+                        }
+                        var temp = "("+res.puntos[i+7].x+","+res.puntos[i+7].y+")";
+                        if(!aux[temp]){
+                            tr.find("#circPt7").html(temp);
+                            aux[temp]=1;
+                        }
+                        $tbody.append(tr);
+                    }
+
+                },
+                btnCirculoPolares_click:function(e){
+                    e.preventDefault();$("table").addClass("hidden")
+                    console.log("btnCirculoPmedio_click");
+                    
+
+                },
+                btnElipsePolares_click:function(e){
+                    e.preventDefault();$("table").addClass("hidden")
+                    console.log("btnElipsePolares_click");
+                    var cx =  parseInt($("#el-cx").val());
+                    var cy =  parseInt($("#el-cy").val());
+                    var rx =  parseInt($("#el-rx").val());
+                    var ry =  parseInt($("#el-ry").val());
+                    cx = Algoritmos.preventNan(cx);
+                    cy = Algoritmos.preventNan(cy);
+                    rx = Algoritmos.preventNan(rx);
+                    ry = Algoritmos.preventNan(ry);
+                    console.log(cx,cy,rx,ry);
+                    var res = Algoritmos.elipsePolar(cx,cy,rx,ry);
+                    console.log(res);
+                    var $tr = $("<tr>")
+                        .append($("<td>").attr("id","elTheta"))
+                        .append($("<td>").attr("id","elPt"));
+                    var $tbody = $("#el-polar tbody").empty();
+                    aux = {};
+                    for(var i in res){
+                        var tr = $tr.clone();
+                        var t = res[i];
+                        var temp = "("+t.x+","+t.y+")";
+                        tr.find("#elTheta").html(t.theta);
+                        tr.find("#elPt").html(temp);
+
+                        if(!aux[temp]){
+                            aux[temp] = 1;
+                            $tbody.append(tr);
+                        }
+                    }
+                    $tbody.closest("table").removeClass("hidden");
+
+                },
+                btnElipsePmedio_click:function(e){
+                    e.preventDefault();$("table").addClass("hidden")
+                    console.log("btnElipsePmedio_click");
+                    var cx =  parseInt($("#el-cx").val());
+                    var cy =  parseInt($("#el-cy").val());
+                    var rx =  parseInt($("#el-rx").val());
+                    var ry =  parseInt($("#el-ry").val());
+                    cx = Algoritmos.preventNan(cx);
+                    cy = Algoritmos.preventNan(cy);
+                    rx = Algoritmos.preventNan(rx);
+                    ry = Algoritmos.preventNan(ry);
+                    console.log(cx,cy,rx,ry);
+                    var res = Algoritmos.elipsePuntoMedio(cx,cy,rx,ry);
+                    console.log(res);
+                    var $tr = $("<tr>")
+                        .append($("<td>").attr("id","elInd"))
+                        .append($("<td>").attr("id","elP"))
+                        .append($("<td>").attr("id","elPx"))
+                        .append($("<td>").attr("id","elPy"))
+                        .append($("<td>").attr("id","elRx"))
+                        .append($("<td>").attr("id","elRy"))
+                    var $tbody = $("#el-table1 tbody").empty()
+                    $tbody.closest("table").removeClass("hidden");
+                    for(var i in res.tabla1){
+                        var t =  res.tabla1[i];
+                        var tr = $tr.clone();
+                        tr.find("#elInd").html(i);
+                        tr.find("#elP").html(t.p);
+                        tr.find("#elPx").html(t.punto.x);
+                        tr.find("#elPy").html(t.punto.y);
+                        tr.find("#elRx").html(t.px);
+                        tr.find("#elRy").html(t.py);
+                        $tbody.append(tr);
+                    }
+                    $tr = $("<tr>")
+                        .append($("<td>").attr("id","elInd"))
+                        .append($("<td>").attr("id","elP"))
+                        .append($("<td>").attr("id","elPx"))
+                        .append($("<td>").attr("id","elPy"))
+                        .append($("<td>").attr("id","elRx"))
+                        .append($("<td>").attr("id","elRy"))
+                    var $tbody = $("#el-table2 tbody").empty()
+                    $tbody.closest("table").removeClass("hidden");
+                    for(var i in res.tabla2){
+                        var t =  res.tabla2[i];
+                        var tr = $tr.clone();
+                        tr.find("#elInd").html(i);
+                        tr.find("#elP").html(t.p);
+                        tr.find("#elPx").html(t.punto.x);
+                        tr.find("#elPy").html(t.punto.y);
+                        tr.find("#elRx").html(t.px);
+                        tr.find("#elRy").html(t.py);
+                        $tbody.append(tr);
+                    }
+                    $tr = $("<tr>")
+                        .append($("<td>").attr("id","elPt"))
+                        .append($("<td>").attr("id","elPt2"))
+                        .append($("<td>").attr("id","elPt3"))
+                        .append($("<td>").attr("id","elPt4"))
+                    var $tbody = $("#el-puntos tbody").empty()
+                    $tbody.closest("table").removeClass("hidden");
+                    var aux = {};
+                    for(var i =0; i < res.puntos.length; i += 4){
+                        var tr = $tr.clone();
+                        var temp = "("+res.puntos[i].x+","+res.puntos[i].y+")";
+                        if(!aux[temp]){
+                            tr.find("#elPt").html(temp);
+                            aux[temp] = 1;
+                        }
+                        var temp = "("+res.puntos[i+1].x+","+res.puntos[i+1].y+")";
+                        if(!aux[temp]){
+                            tr.find("#elPt2").html(temp);
+                            aux[temp] = 1;
+                        }
+                        var temp = "("+res.puntos[i+2].x+","+res.puntos[i+2].y+")";
+                        if(!aux[temp]){
+                            tr.find("#elPt3").html(temp);
+                            aux[temp] = 1;
+                        }
+                        var temp = "("+res.puntos[i+3].x+","+res.puntos[i+3].y+")";
+                        if(!aux[temp]){
+                            tr.find("#elPt4").html(temp);
+                            aux[temp] = 1;
+                        }
+
+
+                        $tbody.append(tr);
+
+                    }
+                },
+
+            };
+            page.init();
+
+        })(jQuery,window);
+    </script>
+</body>
+
+</html>

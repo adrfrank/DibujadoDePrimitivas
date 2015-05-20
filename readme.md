@@ -1,6 +1,7 @@
-Dibujado de primitivas
-=========================
+# Dibujado de primitivas
 
-Proyecto 2 -  Graficas por computadora
+## Proyecto 2
 
-Dibujado de primitivas usando html y javascript.
+* Dibujado de Rectas
+* Dibujado de circulos
+* Dibujado de Elipses
