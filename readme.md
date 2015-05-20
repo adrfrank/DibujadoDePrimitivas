@@ -1,4 +1,5 @@
 # Dibujado de primitivas
+Proyecto de dibujado de primitivas usando html y javascript
 
 ## Proyecto 2
 

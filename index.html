@@ -294,6 +294,16 @@
                                 <tbody>
                                 </tbody>
                             </table>
+                            <table id="circ-polar" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>&theta;</th>
+                                        <th>(x,y)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -516,6 +526,29 @@
                 }
                 return {puntos:puntos, tabla: tabla};
             },
+            polar:function(cx, cy, r, a){
+                var punto={};
+                var radian;
+                radian = 180.0 / Math.PI;
+                punto.x = cx + Math.round(r*Math.cos(a ));
+                punto.y = cy + Math.round(r*Math.sin(a ));
+                return punto;
+            },
+            circuloPolar: function(cx,cy,r){
+                //var inc=180.0/(Math.PI*r);
+                var inc = Math.PI / (4*r)
+                var i;
+                var punto = {};
+                var puntos = [];
+                var acc=0;
+                for(i=0;i<2*Math.PI;i+=inc)
+                {
+
+                    punto = Algoritmos.polar(cx,cy,r,i);
+                    puntos.push({x:punto.x, y: punto.y, theta: i});
+                }
+                return puntos;
+            },
 
             preventNan:function(x){
                 return isNaN(x)?0:x;
@@ -667,6 +700,32 @@
                 btnCirculoPolares_click:function(e){
                     e.preventDefault();$("table").addClass("hidden")
                     console.log("btnCirculoPmedio_click");
+                    var cx = parseInt($("#circ-cx").val());
+                    var cy = parseInt($("#circ-c").val());
+                    var r = parseInt($("#circ-r").val());
+                    cx = Algoritmos.preventNan(cx);
+                    cy = Algoritmos.preventNan(cy);
+                    r = Algoritmos.preventNan(r);
+                    var res = Algoritmos.circuloPolar(cx,cy,r);
+                    console.log(res);
+                    var $tr = $("<tr>")
+                        .append($("<td>").attr("id","circTheta"))
+                        .append($("<td>").attr("id","circPt"));
+                    var $tbody = $("#circ-polar tbody").empty();
+                    aux = {};
+                    for(var i in res){
+                        var tr = $tr.clone();
+                        var t = res[i];
+                        var temp = "("+t.x+","+t.y+")";
+                        tr.find("#circTheta").html(t.theta);
+                        tr.find("#circPt").html(temp);
+
+                        if(!aux[temp]){
+                            aux[temp] = 1;
+                            $tbody.append(tr);
+                        }
+                    }
+                    $tbody.closest("table").removeClass("hidden");
                     
 
                 },
